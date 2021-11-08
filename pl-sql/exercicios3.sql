@@ -69,3 +69,26 @@ IMC em adultos Condição
 No final, apresente seu peso, sua altura e sua condição.
 Atividade extra: Repita os exercícios nºs 13 e 14 utilizando a estrutura de decisão CASE.
 */
+
+DECLARE
+V_PESO FLOAT := &V_PESO ;
+V_ALT FLOAT := &V_ALT ;
+V_STATUS VARCHAR(20) ;
+V_IMC FLOAT ;
+BEGIN
+V_IMC := V_PESO / (V_ALT * V_ALT) ;
+V_STATUS:=
+CASE
+WHEN V_IMC < 18.5 THEN
+'ABAIXO DO PESO'
+WHEN V_IMC >= 18.5 AND V_IMC < 25 THEN
+'PESO NORMAL'
+WHEN V_IMC >= 25 AND V_IMC < 30 THEN
+'ACIMA DO PESO'
+ELSE
+'OBESO'
+END;
+DBMS_OUTPUT.PUT_LINE('Peso Informado: ' || V_PESO);
+DBMS_OUTPUT.PUT_LINE('Altura Informado: ' || V_ALT);
+DBMS_OUTPUT.PUT_LINE('Condição Atual: ' || V_STATUS);
+END;
